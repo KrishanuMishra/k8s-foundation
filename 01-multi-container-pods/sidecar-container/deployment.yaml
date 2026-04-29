@@ -1,0 +1,29 @@
+# Implement a sidecar container to monitor the logs of the main container
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: main-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+        - name: sidecar-container
+          image: busybox:latest
+          command: ["tail", "-f", "/dev/null"]
+          volumeMounts:
+            - name: log-volume
+              mountPath: /mnt/logs
+      volumes:
+        - name: log-volume
+          emptyDir: {}
