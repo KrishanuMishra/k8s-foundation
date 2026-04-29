@@ -1,3 +1,9 @@
 # Kubernetes - Foundation
 
-This repository is used by me to keep track of learning basic of Kubernetes in detail.
+This repository is used to track hands-on notes and examples while learning Kubernetes fundamentals.
+
+## Topics
+
+| Topic | Guide |
+|-------|-------|
+| Multi-container pods | [01-multi-container-pods/multi-container-pods.md](01-multi-container-pods/multi-container-pods.md) |
