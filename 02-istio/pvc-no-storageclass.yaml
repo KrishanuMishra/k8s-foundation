@@ -1,0 +1,14 @@
+# PersistentVolumeClaim with no storageClassName.
+# The DefaultStorageClass admission controller mutates this object so the
+# cluster's default StorageClass is applied (when one exists and is marked default).
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demo-pvc-no-sc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # storageClassName omitted on purpose — default SC is injected at admission time.

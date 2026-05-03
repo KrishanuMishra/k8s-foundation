@@ -1,0 +1,10 @@
+# Tight quota so a greedy Pod manifest (pod-exceeds-quota.yaml) is rejected.
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: demo-quota
+spec:
+  hard:
+    requests.cpu: "500m"
+    requests.memory: 512Mi
+    pods: "10"
